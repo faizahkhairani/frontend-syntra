@@ -36,7 +36,6 @@ export interface Attendance {
   _id: string;
   userId: User;
   shiftScheduleId: ShiftSchedule;
-  shiftId: Shift;
   date: string;
   checkIn: { time: string; latitude: number; longitude: number };
   checkOut: { time: string; latitude: number; longitude: number };
@@ -47,7 +46,7 @@ export interface Attendance {
 export interface LeaveRequest {
   _id: string;
   userId: User;
-  type: "annual" | "sick" | "permit" | "maternity" | "religious";
+  type: "annual" | "sick" | "permit" | "maternity";
   startDate: string;
   endDate: string;
   duration: number;

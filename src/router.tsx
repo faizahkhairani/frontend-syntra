@@ -10,8 +10,11 @@ import UserSchedules from "./app/admin/user-schedules/page";
 import AttendancesPage from "./app/admin/attendances/page";
 import LeavePage from "./app/admin/leaves/page";
 
-import EmployeeLayout from "./app/employee/layouts";
-import Beranda from "./app/employee/dashboard/page";
+import EmployeeLayout from "./app/employee/layout";
+import MyDashboard from "./app/employee/dashboard/page";
+import MyAttendance from "./app/employee/attendance/page";
+import MySchedule from "./app/employee/schedule/page";
+import MyLeaves from "./app/employee/leave/page";
 
 // pakai selector langsung
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -80,10 +83,10 @@ export const router = createBrowserRouter([
     ),
     children: [
       { index: true, element: <Navigate to="/beranda" replace /> },
-      { path: "beranda", element: <EmployeeRoute><Beranda /></EmployeeRoute>},
-      { path: "jadwal", element: <EmployeeRoute>hah</EmployeeRoute> },
-      { path: "absensi", element: <EmployeeRoute>test</EmployeeRoute> },
-      { path: "cuti", element: <EmployeeRoute>test</EmployeeRoute> },
+      { path: "beranda", element: <EmployeeRoute><MyDashboard /></EmployeeRoute> },
+      { path: "jadwal", element: <EmployeeRoute><MySchedule /></EmployeeRoute> },
+      { path: "absensi", element: <EmployeeRoute><MyAttendance /></EmployeeRoute> },
+      { path: "cuti", element: <EmployeeRoute><MyLeaves /></EmployeeRoute> },
     ]
   }
 ])

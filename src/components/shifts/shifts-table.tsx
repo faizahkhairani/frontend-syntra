@@ -149,7 +149,7 @@ const ShiftsTable = () => {
             <DialogContent className="sm:max-w-lg">
                 <DialogHeader className="border-b pb-2">
                     <DialogTitle className="text-center text-xl font-semibold tracking-[-0.16px] sm:text-left dark:text-[#fcfdffef]">
-                        Create Shift
+                          {isEditMode ? "Edit Shift" : "Create Shift"}
                     </DialogTitle>
                     <DialogDescription className="text-muted-foreground text-sm leading-tight">
                         Organize and manage Shift, resources, and team collaboration

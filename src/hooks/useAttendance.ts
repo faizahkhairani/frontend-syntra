@@ -3,14 +3,21 @@ import api from "@/lib/axios"
 import type { Attendance } from "@/types"
 import { toast } from "sonner"
 
-export const useAttendance = (initialDate?: string) => {
-  const today = new Date().toISOString().split("T")[0]
+export const useAttendance = () => {
+  // const today = new Date().toISOString().split("T")[0]
 
   const [attendance, setAttendance] = useState<Attendance[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [filterDate, setFilterDate] = useState(initialDate ?? today) // ← default hari ini
-  const [filterMonth, setFilterMonth] = useState("")
-  const [filterYear, setFilterYear] = useState("")
+  const [filterDate, setFilterDate] = useState(
+    String(new Date().getDate()).padStart(2, "0")
+  )
+  // const [filterDate, setFilterDate] = useState(initialDate ?? today)
+  const [filterMonth, setFilterMonth] = useState(
+    String(new Date().getMonth() + 1).padStart(2, "0")
+  ) // ambil bulan sekarang
+  const [filterYear, setFilterYear] = useState(
+    String(new Date().getFullYear())
+  ) // ambil tahun sekarang
   const [filterStatus, setFilterStatus] = useState("")
 
   const fetchAttendance = async () => {

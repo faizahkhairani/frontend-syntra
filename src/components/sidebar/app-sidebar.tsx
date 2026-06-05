@@ -25,32 +25,32 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "/dashboard",
+      url: "/admin/dashboard",
       icon: LayoutDashboard,
     },
     {
       title: "Staff",
-      url: "/users",
+      url: "/admin/users",
       icon: Users,
     },
     {
       title: "Shifts",
-      url: "/shifts",
+      url: "/admin/shifts",
       icon: CalendarDays
     },
     {
       title: "Schedules",
-      url: "/schedules",
+      url: "/admin/schedules",
       icon: CalendarDays,
     },
     {
       title: "Leaves",
-      url: "/leaves",
+      url: "/admin/leaves",
       icon: CalendarSync,
     },
     {
       title: "Attendances",
-      url: "/attendances",
+      url: "/admin/attendances",
       icon: Megaphone,
     },
   ],

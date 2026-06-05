@@ -296,7 +296,7 @@ const SchedulesTable = () => {
 
                           <InputGroupAddon align="inline-end">
                             <Popover>
-                              <PopoverTrigger>
+                              <PopoverTrigger asChild>
                                 <InputGroupButton
                                   variant="ghost"
                                   size="icon-xs"
