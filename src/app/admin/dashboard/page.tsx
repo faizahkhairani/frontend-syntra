@@ -1,12 +1,10 @@
 import { useDashboard } from "@/hooks/useDashboard"
 import SummaryCards from "@/components/dashboard/summary-card"
 import DailyRecapTable from "@/components/dashboard/daily-recap"
-import { useAuthStore } from "@/store/authStore"
 
 
 
 const Dashboard = () => {
-  const { user } = useAuthStore((state) => state)
   
   const { summary, isLoading } = useDashboard()
   return (

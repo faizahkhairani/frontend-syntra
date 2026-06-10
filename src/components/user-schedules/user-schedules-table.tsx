@@ -79,7 +79,6 @@ const SchedulesTable = () => {
   const [isDeleting, setIsDeleting] = useState(false)
   
     const { 
-      register,
       handleSubmit,
       reset,
       control,

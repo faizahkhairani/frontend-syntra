@@ -29,7 +29,7 @@ const formSchema = z.object({
   name:           z.string().min(1, "Nama shift wajib diisi"),
   start_time:     z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/, "Format harus HH:mm"),
   end_time:       z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/, "Format harus HH:mm"),
-  late_tolerance: z.coerce.number().min(0, "Minimal 0 menit").max(60, "Maksimal 60 menit"),
+  late_tolerance: z.number().min(0, "Minimal 0 menit").max(60, "Maksimal 60 menit"),
 })
 
 type FormValues = z.infer<typeof formSchema>

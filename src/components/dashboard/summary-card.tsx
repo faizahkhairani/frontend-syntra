@@ -1,4 +1,4 @@
-import { Users, CheckCircle, Clock, XCircle, CalendarClock, AlertCircle, ArrowRight } from "lucide-react"
+import { Users, CheckCircle, Clock, CalendarClock, ArrowRight } from "lucide-react"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import type { DashboardSummary } from "@/types"
