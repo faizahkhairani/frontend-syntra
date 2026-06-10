@@ -79,7 +79,7 @@ interface usersFormProbs {
                 <FieldSet>
                     <div className="border-b pb-2">
                         <FieldLegend className="mb-2 text-center text-xl font-semibold tracking-[-0.16px] sm:text-left dark:text-[#fcfdffef]">
-                            Create Staff Account
+                                  Menambahkan Staff Baru
                         </FieldLegend>
                         <FieldDescription className="text-muted-foreground text-sm leading-tight">
                             Organize and manage staff, resources, and team collaboration

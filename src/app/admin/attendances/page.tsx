@@ -6,10 +6,10 @@ const AttendancesPage = () => {
     <div className="h-full w-full flex-col space-y-8">
         <div>
           <h2 className="text-2xl font-medium tracking-tight">
-            List of Attendances
+          Manajemen Absensi
           </h2>
           <p className="text-muted-foreground">
-            Here is the list of all attendance records in the petshop.
+          Kelola data absensi karyawan petshop.
           </p>
         </div>
       {/* <div className="flex items-center justify-between">

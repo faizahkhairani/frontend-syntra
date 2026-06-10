@@ -36,7 +36,7 @@ export const getColumn = ({onDelete}: ColumnAction) => {
         },
         {
             accessorKey: "shiftId",
-            header: "Shift",
+            header: "Jadwal Shift",
             cell: ({ row }) => {
             const shift = row.original.shiftId // ← object Shift
             return (

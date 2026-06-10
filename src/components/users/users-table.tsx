@@ -243,10 +243,10 @@ const UsersTable = () => {
         <DialogContent className="sm:max-w-lg">
           <DialogHeader className="border-b pb-2">
             <DialogTitle className="text-center text-xl font-semibold tracking-[-0.16px] sm:text-left dark:text-[#fcfdffef]">
-              {isEditMode ? "Edit Staff Account" : "Create Staff Account"}
+              {isEditMode ? "Edit Akun Staff" : "Menambahkan Staff Baru"}
             </DialogTitle>
             <DialogDescription className="text-muted-foreground text-sm leading-tight">
-              Organize and manage staff, resources, and team collaboration
+              Menyusun dan mengelola staff, sumber daya, serta kolaborasi tim
             </DialogDescription>
           </DialogHeader>
           <div className="h-auto w-full max-w-full">
@@ -257,12 +257,12 @@ const UsersTable = () => {
                         <FieldGroup>
                             <Field>
                                 <FieldLabel htmlFor="name">
-                                    Full Name
+                          Nama Lengkap
                                 </FieldLabel>
                                 <Input 
                                 className="h-10" 
                                 id="name" 
-                                placeholder="Enter full name" 
+                          placeholder="Masukkan nama lengkap" 
                                 {...register("name")}
                                 />
                                 {errors.name && (
@@ -277,7 +277,7 @@ const UsersTable = () => {
                                     className="h-10"
                                     id="email"
                                     type="email"
-                                    placeholder="Enter email"
+                          placeholder="Masukkan email"
                                     {...register("email")}
                                 />
                                 {errors.email && (
@@ -291,7 +291,7 @@ const UsersTable = () => {
                                     className="h-10"
                                     id="password"
                                     type="password"
-                                    placeholder="Enter password"
+                            placeholder="Masukkan password"
                                     {...register("password")}
                                 />
                                 {errors.password && (
@@ -301,13 +301,13 @@ const UsersTable = () => {
                             )}
                             <Field>
                                 <FieldLabel htmlFor="phone">
-                                    Phone
+                          Nomor Telepon
                                 </FieldLabel>
                                 <Input
                                     className="h-10"
                                     id="phone"
                                     type="number"
-                                    placeholder="Enter phone number"
+                          placeholder="Masukkan nomor telepon"
                                     {...register("phone")}
                                 />
                                 {errors.phone && (
@@ -315,7 +315,7 @@ const UsersTable = () => {
                                 )}
                             </Field>
                             <Field>
-                                <FieldLabel htmlFor="department">Department</FieldLabel>
+                        <FieldLabel htmlFor="department">Departemen</FieldLabel>
                                 <Input
                                     className="h-10"
                                     id="department"
@@ -327,18 +327,18 @@ const UsersTable = () => {
                                 )}
                             </Field>
                             <Field>
-                                <FieldLabel>Gender</FieldLabel>
+                        <FieldLabel>Jenis Kelamin</FieldLabel>
                                 <Controller 
                                 control={control} 
                                 name="gender"
                                 render={({field}) => (
                                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                                         <SelectTrigger className="w-full">
-                                        <SelectValue placeholder="Select a gender" />
+                                      <SelectValue placeholder="Pilih jenis kelamin" />
                                         </SelectTrigger>
                                         <SelectContent>
-                                        <SelectItem value="Male">Male</SelectItem>
-                                        <SelectItem value="Female">Female</SelectItem>
+                                      <SelectItem value="Male">Laki-laki</SelectItem>
+                                      <SelectItem value="Female">Perempuan</SelectItem>
                                         </SelectContent>
                                     </Select>
                                 )}
@@ -355,10 +355,10 @@ const UsersTable = () => {
                                     render={({ field }) => (
                                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                                         <SelectTrigger className="w-full">
-                                        <SelectValue placeholder="Select a role" />
+                                          <SelectValue placeholder="Pilih role" />
                                         </SelectTrigger>
                                         <SelectContent>
-                                        <SelectItem value="employee">Employee</SelectItem>
+                                          <SelectItem value="employee">Karyawan</SelectItem>
                                         <SelectItem value="admin">Admin</SelectItem>
                                         </SelectContent>
                                     </Select>
@@ -376,14 +376,14 @@ const UsersTable = () => {
                             {isSubmitting ? (
                             <>
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                Creating...
+                          Menambahkan...
                             </>
                             ) : (
                             isEditMode ? "Update User" : "Create User"
                             )}
                         </Button>
                         <Button variant="outline" type="button" onClick={() => setIsFormOpen(false)}>
-                            Cancel
+                      Batal
                         </Button>
                     </Field>
                 </FieldGroup>

@@ -6,10 +6,10 @@ const ShiftsPage = () => {
     <div className="h-full w-full flex-col space-y-8">
         <div>
           <h2 className="text-2xl font-medium tracking-tight">
-            List of Shift
+          Manajemen Jadwal Kerja
           </h2>
           <p className="text-muted-foreground">
-            Here is the list of all shift enrolled in the petshop.
+          Kelola jadwal kerja karyawan petshop.
           </p>
         </div>
       {/* <div className="flex items-center justify-between">

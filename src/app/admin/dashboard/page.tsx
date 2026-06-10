@@ -15,7 +15,7 @@ const Dashboard = () => {
       {/* Heading */}
       <div>
         <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-muted-foreground">Here&apos;s an overview for this workspace!</p>
+        <p className="text-muted-foreground">Berikut adalah gambaran umum untuk workspace ini!</p>
       </div>
 
       {/* Stat Cards */}

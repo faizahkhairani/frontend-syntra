@@ -6,10 +6,10 @@ const LeavePage = () => {
     <div className="h-full w-full flex-col space-y-8">
         <div>
           <h2 className="text-2xl font-medium tracking-tight">
-            List of Leaves
+          Manajemen Cuti
           </h2>
           <p className="text-muted-foreground">
-            Here is the list of all leaves enrolled in the petshop.
+          Kelola data cuti karyawan petshop.
           </p>
         </div>
       {/* <div className="flex items-center justify-between">

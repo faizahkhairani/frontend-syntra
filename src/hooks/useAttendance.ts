@@ -1,67 +1,64 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import api from "@/lib/axios"
 import type { Attendance } from "@/types"
+import { format } from "date-fns";
 import { toast } from "sonner"
 
-export const useAttendance = () => {
-  // const today = new Date().toISOString().split("T")[0]
+export type AttendanceStatus = "present" | "late" | "";
+export type FilterMode = "today" | "month";
 
-  const [attendance, setAttendance] = useState<Attendance[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [filterDate, setFilterDate] = useState(
-    String(new Date().getDate()).padStart(2, "0")
-  )
-  // const [filterDate, setFilterDate] = useState(initialDate ?? today)
-  const [filterMonth, setFilterMonth] = useState(
-    String(new Date().getMonth() + 1).padStart(2, "0")
-  ) // ambil bulan sekarang
-  const [filterYear, setFilterYear] = useState(
-    String(new Date().getFullYear())
-  ) // ambil tahun sekarang
-  const [filterStatus, setFilterStatus] = useState("")
 
-  const fetchAttendance = async () => {
-      try {
-        setIsLoading(true)
-        const params = new URLSearchParams()
-      // knp if else karna filter pilih salah satu mau date atau bulanan dan tahunan
-      // ?date=2026-05-09
-      if (filterDate) {
-      params.append("date", filterDate)
-    } else if (filterMonth && filterYear) {
-      // ?month=5&year=2026
-      params.append("month", filterMonth)
-      params.append("year", filterYear)
-    }
 
-    // ?date=2026-05-09&status=late <- kalo status ada
-    if (filterStatus) params.append("status", filterStatus)
+export interface AttendanceFilter {
+  mode: FilterMode;
+  date?: string;   // "YYYY-MM-DD" — dipakai saat mode = today
+  month?: string;  // "1"-"12"    — dipakai saat mode = month
+  year?: string;   // "2026"
+  status?: AttendanceStatus;
+}
 
-    // date=2026-05-09&status=present
-    const res = await api.get(`/attendance?${params.toString()}`)
+
+const todayFilter = (): AttendanceFilter => ({
+  mode: "today",
+  date: format(new Date(), "yyyy-MM-dd"),
+});
+
+export function useAttendance() {
+  const [attendance, setAttendance] = useState<Attendance[]>([]);
+  const [filter, setFilter] = useState<AttendanceFilter>(todayFilter);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchAttendance = useCallback(async (f: AttendanceFilter) => {
+    setIsLoading(true)
+    try {
+      const params: Record<string, string> = {};
+        if (f.mode === "today" && f.date) {
+        params.date = f.date;
+      } else if (f.mode === "month" && f.month && f.year) {
+        params.month = f.month;
+        params.year  = f.year;
+      }
+
+      if (f.status) params.status = f.status;
+      const res = await api.get("/attendance", {params})
       setAttendance(res.data.data)
     } catch (err: any) {
       toast.error(err.response?.data?.message || "Gagal mengambil data")
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-      
-  }
-  useEffect(() => {
-    fetchAttendance()
-  }, [filterDate, filterMonth, filterYear, filterStatus])
+  }, [])
 
-  return {
+  useEffect(() => {
+    fetchAttendance(filter)
+  }, [filter, fetchAttendance])
+
+  return{
     attendance,
+    filter,
     isLoading,
-    filterDate,
-    filterMonth,
-    filterYear,
-    filterStatus,
-    setFilterDate,
-    setFilterMonth,
-    setFilterYear,
-    setFilterStatus,
-    refetch: fetchAttendance,
+    applyFilter: (f: AttendanceFilter) => setFilter(f),
+    resetFilter: () => setFilter(todayFilter()),
+    refetch: () => fetchAttendance(filter),
   }
 }

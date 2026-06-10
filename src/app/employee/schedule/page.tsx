@@ -4,6 +4,8 @@ import { CalendarDays, Sunrise, Sun, Moon } from "lucide-react"
 import { Skeleton } from "@/components/ui/skeleton"
 import { useMySchedule } from "@/hooks/useMySchedule"
 import MobilePagination from "@/components/employee/mobile-pagination"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+
 
 
 const getShiftConfig = (shiftName: string) => {
@@ -72,17 +74,18 @@ const MySchedule = () => {
             {/* Tahun */}
             <div className="flex items-center justify-between mb-4">
                 <h2 className="text-white text-lg font-semibold">Filter By</h2>
-                <select
-                value={filterYear}
-                onChange={(e) => setFilterYear(e.target.value)}
-                className="bg-white/20 text-white text-sm px-3 py-1.5 rounded-lg border-none outline-none"
-                >
-                {[2024, 2025, 2026].map((y) => (
-                    <option key={y} value={String(y)} className="text-black">
-                    {y}
-                    </option>
-                ))}
-                </select>
+                  <Select onValueChange={(value) => setFilterYear(value)} defaultValue={filterYear}>
+                      <SelectTrigger className="bg-white/20 text-white text-sm px-3 py-1.5 rounded-lg border-none outline-none">
+                          <SelectValue placeholder="Filter Tahun" />
+                      </SelectTrigger>
+                      <SelectContent>
+                          {[2024, 2025, 2026].map((y) => (
+                              <SelectItem key={y} value={String(y)}>
+                                  {y}
+                              </SelectItem>
+                          ))}
+                      </SelectContent>
+                  </Select>
             </div>
 
             {/* Grid bulan */}

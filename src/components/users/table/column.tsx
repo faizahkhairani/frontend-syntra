@@ -24,7 +24,7 @@ export const getColumn = ({onEdit, onDelete, onResetPassword}: ColumnAction): Co
         },
         {
             accessorKey: "name",
-            header: "Full Name",
+            header: "Nama Lengkap",
             cell: ({ row }) => {
                 const user = row.original
                 const initials = user.name
@@ -51,7 +51,7 @@ export const getColumn = ({onEdit, onDelete, onResetPassword}: ColumnAction): Co
         },
         {
             accessorKey: "gender",
-            header: "Gender",
+            header: "Jenis Kelamin",
             cell: ({ row }) => (
                 <span className="text-sm">
                 {row.original.gender ?? "-"}
@@ -60,7 +60,7 @@ export const getColumn = ({onEdit, onDelete, onResetPassword}: ColumnAction): Co
         },
         {
             accessorKey: "department",
-            header: "Department",
+            header: "Departemen",
             cell: ({row}) => (
                 <span className="text-sm">
                     {row.original.department ?? "-"}
@@ -69,7 +69,7 @@ export const getColumn = ({onEdit, onDelete, onResetPassword}: ColumnAction): Co
         },
         {
             accessorKey: "phone",
-            header: "Phone Number",
+            header: "Nomor Telepon",
             cell: ({row}) => (
                 <span className="text-sm">
                     {row.original.phone ?? "-"}

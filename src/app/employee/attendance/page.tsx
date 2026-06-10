@@ -61,15 +61,15 @@ const MyAttendance = () => {
             ))}
             </select> */}
             <Select onValueChange={(value) => setFilterYear(value)} defaultValue={filterYear}>
-              <SelectTrigger className="w-30">
+            <SelectTrigger className="bg-white/20 text-white text-sm px-3 py-1.5 rounded-lg border-none outline-none">
                 <SelectValue placeholder="Filter Tahun" />
               </SelectTrigger>
               <SelectContent>
-                  {[2024, 2025, 2026].map((y) => (
-                      <SelectItem key={y} value={String(y)}>
-                          {y}
-                      </SelectItem>
-                  ))}
+              {[2024, 2025, 2026].map((y) => (
+                <SelectItem key={y} value={String(y)}>
+                  {y}
+                </SelectItem>
+              ))}
               </SelectContent>
           </Select>
         </div>

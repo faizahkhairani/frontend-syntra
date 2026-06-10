@@ -35,7 +35,11 @@ export const exportAttendancePDF = (
 ) => {
   const doc = new jsPDF()
 
-  const monthName = format(new Date(`${year}-${month}-01`), "MMMM yyyy", { locale: id })
+    const monthName = format(
+  new Date(Number(year), Number(month) - 1, 1),
+  "MMMM yyyy",
+  { locale: id }
+)
 
   addHeader(
     doc,

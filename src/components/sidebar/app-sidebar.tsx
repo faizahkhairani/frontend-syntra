@@ -29,27 +29,27 @@ const data = {
       icon: LayoutDashboard,
     },
     {
-      title: "Staff",
+      title: "Karyawan",
       url: "/admin/users",
       icon: Users,
     },
     {
-      title: "Shifts",
+      title: "Jadwal Kerja",
       url: "/admin/shifts",
       icon: CalendarDays
     },
     {
-      title: "Schedules",
+      title: "Jadwal Karyawan",
       url: "/admin/schedules",
       icon: CalendarDays,
     },
     {
-      title: "Leaves",
+      title: "Cuti",
       url: "/admin/leaves",
       icon: CalendarSync,
     },
     {
-      title: "Attendances",
+      title: "Absensi",
       url: "/admin/attendances",
       icon: Megaphone,
     },
