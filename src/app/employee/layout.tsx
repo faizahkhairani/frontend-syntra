@@ -11,42 +11,10 @@ const navItems = [
 ]
 
 export default function EmployeeLayout() {
-  // const user = useAuthStore((state) => state.user)
-
-  // const initials = user?.name
-  //   ?.split(" ")
-  //   .map((n) => n[0])
-  //   .join("")
-  //   .toUpperCase()
-  //   .slice(0, 2)
-
-  //   const handleLogout = () => {
-  //     useAuthStore.getState().logout()
-  //   }
+ 
 
   return (
-    <div className="min-h-screen bg-primary/2 flex flex-col">
-
-      {/* Header */}
-      {/* <header className="sticky top-0 z-10 px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-        <Avatar className="h-9 w-9">
-          <AvatarFallback className="bg-primary/10 text-primary text-sm font-poppins">
-            {initials}
-          </AvatarFallback>
-        </Avatar>
-            <div>
-                <p className="text-xs text-muted-foreground">Selamat Datang</p>
-                <p className="text-sm font-semibold text-slate-800">{user?.name}</p>
-            </div>
-        </div>
-          <button
-            onClick={handleLogout}
-            className="flex items-center justify-center text-muted-foreground hover:text-destructive transition-colors bg-white rounded-full w-10 h-10"
-          >
-            <LogOut className="h-4 w-4" />
-          </button>
-      </header> */}
+    <div className="min-h-screen bg-white flex flex-col">
 
       {/* Content */}
       <main className="flex-1 overflow-auto pb-20">
