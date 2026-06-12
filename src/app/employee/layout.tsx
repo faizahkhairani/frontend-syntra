@@ -14,7 +14,7 @@ export default function EmployeeLayout() {
  
 
   return (
-    <div className="min-h-screen bg-indigo-50 flex flex-col">
+    <div className="min-h-screen bg-zinc-100 flex flex-col">
 
       {/* Content */}
       <main className="flex-1 overflow-auto pb-20">

@@ -312,36 +312,40 @@ const MyLeaves = () => {
                 
             </Card>
             <Card className="w-full mt-7">
-                <CardHeader className="flex flex-row items-center justify-between">
-                    <div>
+                <CardHeader>
+                    <div className="flex flex-col gap-2">
                         <CardTitle className="text-base font-medium">Riwayat Pengajuan</CardTitle>
-                        <p className="text-sm text-muted-foreground mt-0.5">{filterYear} · {data.length} pengajuan</p>
+                        {/* <p className="text-sm text-muted-foreground mt-0.5">{filterYear} · {data.length} pengajuan</p> */}
+                        <div className="flex justify-between gap-3">
+                            <Select onValueChange={(value) => setFilterStatus(value)} defaultValue={filterStatus}>
+                                <SelectTrigger className="w-30">
+                                    <SelectValue placeholder="Filter Status" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="all">Semua Status</SelectItem>
+                                    <SelectItem value="approved">Disetujui</SelectItem>
+                                    <SelectItem value="pending">Diproses</SelectItem>
+                                    <SelectItem value="rejected">Ditolak</SelectItem>
+                                </SelectContent>
+                            </Select>
+                           
+                            <Select onValueChange={(value) => setFilterYear(value)} defaultValue={filterYear}>
+                                <SelectTrigger className="w-30">
+                                    <SelectValue placeholder="Filter Tahun" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {[2024, 2025, 2026].map((y) => (
+                                        <SelectItem key={y} value={String(y)}>
+                                            {y}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>                          
+                        </div>
+
                     </div>
-                    <div className="flex items-center gap-3">
-                        <Select onValueChange={(value) => setFilterStatus(value)} defaultValue={filterStatus}>
-                            <SelectTrigger className="w-37.5">
-                                <SelectValue placeholder="Filter Status" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="all">Semua Status</SelectItem>
-                                <SelectItem value="approved">Disetujui</SelectItem>
-                                <SelectItem value="pending">Diproses</SelectItem>
-                                <SelectItem value="rejected">Ditolak</SelectItem>
-                            </SelectContent>
-                        </Select>
-                        <Select onValueChange={(value) => setFilterYear(value)} defaultValue={filterYear}>
-                            <SelectTrigger className="w-30">
-                                <SelectValue placeholder="Filter Tahun" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {[2024, 2025, 2026].map((y) => (
-                                    <SelectItem key={y} value={String(y)}>
-                                        {y}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    </div>
+                    {/* <div className="flex items-center gap-3">
+                    </div> */}
                 </CardHeader>
                 <CardContent className="space-y-3">
                     {isLoading ? (
