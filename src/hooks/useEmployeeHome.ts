@@ -24,7 +24,7 @@ interface ShiftToday {
 export const useEmployeeHome = () => {
   const [shiftToday, setShiftToday] = useState<ShiftToday[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [isAbsenLoading, setIsAbsenLoading] = useState(false)
+  const [isAbsenLoading, setIsAbsenLoading] = useState<string | null>(null)
 
   const fetchTodaySchedule = async() => {
     try {
@@ -40,7 +40,7 @@ export const useEmployeeHome = () => {
 
   const handleCheckIn = async(shiftScheduleId: string, position: GeolocationPosition) => {
     try {
-        setIsAbsenLoading(true)
+        setIsAbsenLoading(shiftScheduleId)
         await api.post("/attendance/checkin", {
             shiftScheduleId,
             latitude: position.coords.latitude,
@@ -51,13 +51,13 @@ export const useEmployeeHome = () => {
     } catch (err: any) {
         toast.error(err.response?.data?.message || "Gagal absen masuk")
     } finally {
-        setIsAbsenLoading(false)
+        setIsAbsenLoading(null)
     }
   }
 
   const handleCheckOut = async(shiftScheduleId: string, position: GeolocationPosition) => {
     try {
-        setIsAbsenLoading(true)
+        setIsAbsenLoading(shiftScheduleId) // di panggil dari requestAbsen dan isinya shift._id
         await api.post("/attendance/checkout", {
             shiftScheduleId,
             latitude: position.coords.latitude,
@@ -68,13 +68,13 @@ export const useEmployeeHome = () => {
     } catch (err: any) {
         toast.error(err.response?.data?.message || "Gagal absen keluar")
     } finally {
-        setIsAbsenLoading(false)
+        setIsAbsenLoading(null)
     }
   }
 
   // minta izin lokasi lalu jalankan aksi
   const requestLocationAndAbsen = (
-    shiftScheduleId: string,
+    shiftScheduleId: string, // id dari parent
     action: "checkin" | "checkout"
   ) => {
     if (!navigator.geolocation) {
@@ -85,7 +85,7 @@ export const useEmployeeHome = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         if (action === "checkin") {
-          handleCheckIn(shiftScheduleId, position)
+          handleCheckIn(shiftScheduleId, position) // panggil fungsi handleCheckIn
         } else {
           handleCheckOut(shiftScheduleId, position)
         }

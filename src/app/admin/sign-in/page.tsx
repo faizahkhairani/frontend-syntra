@@ -1,6 +1,7 @@
 import SignInForm from "@/components/auth/sign-form"
 import { useAuthStore } from "@/store/authStore"
 import { Navigate } from "react-router-dom"
+import LoginHero from "@/assets/hero-cat.jpg"
 const LoginPage = () => {
 
   const token = useAuthStore((state) => state.token)
@@ -25,7 +26,7 @@ const LoginPage = () => {
       <div className="hidden lg:block relative overflow-hidden">
         {/* Foto fullcover */}
         <img
-          src="/src/assets/hero-cat.jpg"
+          src={LoginHero}
           alt="Petshop cat"
           className="w-full h-full object-cover object-top"
         />

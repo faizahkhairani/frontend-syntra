@@ -120,8 +120,9 @@ const MyDashboard = () => {
               <ShiftCard
                 key={shift._id}
                 shift={shift}
-                isLoading={isAbsenLoading}
-                onCheckIn={(id) => requestLocationAndAbsen(id, "checkin")}
+                isLoading={isAbsenLoading === shift._id} // isinya true / false
+                // ShiftCard panggil prop onCheckIn yang dia terima dari parent, sambil kirim shift._id sebagai argumen.
+                onCheckIn={(id) => requestLocationAndAbsen(id, "checkin")} // id = shift.id, lalu jalankan fungsi requestlocation
                 onCheckOut={(id) => requestLocationAndAbsen(id, "checkout")}
               />
             ))}
