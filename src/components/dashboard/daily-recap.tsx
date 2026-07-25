@@ -1,12 +1,14 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-
+import { format } from "date-fns"
+import { id } from "date-fns/locale"
 
 import { useEffect, useState } from "react"
 import api from "@/lib/axios"
 
 import { DataTable } from "./table/table"
 import { columns } from "./table/column"
+import { Badge } from "../ui/badge"
 
 interface DailyRecap {
   employee: { _id: string; name: string; department: string }
@@ -38,10 +40,18 @@ const DailyRecapTable = () => {
 
   return (
     <Card className="shadow-none">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-base font-semibold">
-          Absensi Hari Ini
-        </CardTitle>
+      <CardHeader className="flex flex-row items-center justify-between">
+          <div className="space-y-1">
+            <CardTitle className="text-base font-semibold">
+            Absensi Hari ini
+            </CardTitle>
+            <p className="text-sm text-muted-foreground">
+              {format(new Date(), "EEEE, d MMMM yyyy", { locale: id })}
+            </p>
+          </div>
+          <Badge variant="secondary" className="font-normal">
+            {data.length} karyawan
+          </Badge>
       </CardHeader>
       <CardContent>
         <div className="w-full space-y-4">

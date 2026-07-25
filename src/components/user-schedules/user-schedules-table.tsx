@@ -33,6 +33,7 @@ import { useShifts } from "@/hooks/useShifts"
 import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupButton } from "../ui/input-group"
 import { Popover, PopoverTrigger, PopoverContent } from "../ui/popover"
 import { Calendar } from "../ui/calendar"
+import { useIsDemo } from "@/hooks/useDemo"
 
 const formSchema = z.object({
   userId:   z.string().min(1, "Staff wajib dipilih"),
@@ -77,6 +78,8 @@ const SchedulesTable = () => {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [isDeleteOpen, setIsDeleteOpen] = useState(false)
   const [isDeleting, setIsDeleting] = useState(false)
+
+  const isDemo = useIsDemo()
   
     const { 
       handleSubmit,
@@ -155,20 +158,19 @@ const SchedulesTable = () => {
           onChange={(e) => setFilterDate(e.target.value)}
           className="h-9 w-40"
         />
-        </div>
-
-
         {/* Reset ke hari ini */}
           {filterDate !== new Date().toISOString().split("T")[0] && (
             <Button
-              variant="ghost"
               size="sm"
-              className="h-9 text-xs text-muted-foreground"
+              className="h-9 text-xs text-white"
               onClick={() => setFilterDate(new Date().toISOString().split("T")[0])}
             >
               Hari ini
             </Button>
           )}
+        </div>
+
+
 
         <Button size="sm" className="h-9 gap-1.5" onClick={handleAdd}>
           <Plus className="h-4 w-4" />
@@ -338,10 +340,10 @@ const SchedulesTable = () => {
               </FieldSet>
               <FieldSeparator />
               <Field className="flex justify-end gap-2" orientation="responsive">
-                <Button type="submit" disabled={isSubmitting}>
+                <Button type="submit" disabled={isSubmitting || isDemo}>
                   {isSubmitting ? (
                     <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Menyimpan...</>
-                  ) : "Assign"}
+                  ) : "Assign Shift"}
                 </Button>
               </Field>
             </FieldGroup>

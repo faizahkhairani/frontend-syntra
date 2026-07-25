@@ -57,6 +57,30 @@ export interface LeaveRequest {
   rejectReason?: string;
 }
 
+interface SAWCriteria {
+  sisaQuota: number;
+  kehadiran: number;
+  keterlambatan: number;
+}
+
+interface SAWResult {
+  score: number;
+  rank: number;
+  criteria: SAWCriteria;
+}
+
+export interface LeaveRecommendation {
+  _id: string;
+  userId: User;
+  type: string;
+  startDate: string;
+  endDate: string;
+  duration: number;
+  reason: string;
+  status: string;
+  saw: SAWResult;
+}
+
 export interface DashboardSummary {
   today: string;
   employees: { total: number };

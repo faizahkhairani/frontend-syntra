@@ -25,6 +25,7 @@ import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupButton } from "
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
 import { Textarea } from "@/components/ui/textarea"
 import { Loader2 } from "lucide-react"
+import { useIsDemo } from "@/hooks/useDemo"
 
 const formSchema = z.object({
     type: z.string().min(1, "Tipe Cuti Wajib Dipilih"),
@@ -49,6 +50,8 @@ const MyLeaves = () => {
         leaveTypes,
         fetchLeaves
     } = useMyLeaves()
+
+    const isDemo = useIsDemo()
 
 
     const {
@@ -299,7 +302,7 @@ const MyLeaves = () => {
                         <Button
                         type="submit"
                         className="flex-1"
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || isDemo}
                         >
                         {isSubmitting ? (
                             <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Mengirim...</>
@@ -354,7 +357,7 @@ const MyLeaves = () => {
                         ))
                     ) : data.length === 0 ? (
                         <div className="text-center py-12 text-muted-foreground text-sm">
-                            Tidak ada data absensi bulan ini
+                            Tidak ada data cuti tahun ini
                         </div>
                     ) : (
                         data.map((d) => {

@@ -6,6 +6,7 @@ import {
 import type { Shift } from "@/types"
 import type { Row } from "@tanstack/react-table"
 import { Button } from "@/components/ui/button"
+import { useIsDemo } from "@/hooks/useDemo"
 
 interface DataTableRowActionsProps {
   row: Row<Shift>
@@ -15,6 +16,7 @@ interface DataTableRowActionsProps {
 
 const DataTableRowActions = ({row, onDelete, onEdit}: DataTableRowActionsProps) => {
   const shift = row.original  // ← ambil data shift dari row
+  const isDemo = useIsDemo()
 
 
   return (
@@ -26,7 +28,7 @@ const DataTableRowActions = ({row, onDelete, onEdit}: DataTableRowActionsProps) 
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-40">
-            <DropdownMenuItem onClick={() => onEdit(shift)} className="cursor-pointer">
+            <DropdownMenuItem onClick={() => onEdit(shift)} className="cursor-pointer" disabled={isDemo}>
               <Pencil className="mr-2 h-3.5 w-3.5" />
               Edit Shift
             </DropdownMenuItem>
@@ -34,6 +36,7 @@ const DataTableRowActions = ({row, onDelete, onEdit}: DataTableRowActionsProps) 
             <DropdownMenuItem
               onClick={() => onDelete(shift)}
               className="cursor-pointer text-red-500 focus:text-red-500"
+              disabled={isDemo}
             >
               <Trash2 className="mr-2 h-3.5 w-3.5" />
               Hapus

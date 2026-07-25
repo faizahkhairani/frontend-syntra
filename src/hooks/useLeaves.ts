@@ -5,7 +5,7 @@ import api from "@/lib/axios";
 
 export const useLeaves = () => {
     const [data, setData] = useState<LeaveRequest[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [statusFilter, setStatusFilter] = useState<string>("all");
     const [yearFilter, setYearFilter] = useState<string>(
         String(new Date().getFullYear())

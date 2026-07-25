@@ -121,6 +121,10 @@ const MySchedule = () => {
                     Array.from({ length: 5 }).map((_, i) => (
                     <Skeleton key={i} className="h-16 w-full rounded-xl" />
                     ))
+                ) :  data.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-12 text-center">
+                        <p className="text-black">Tidak ada data</p>
+                    </div>
                 ) : (
                     data.map((d) => {
                         const shift = d.shiftId

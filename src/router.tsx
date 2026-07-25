@@ -9,6 +9,7 @@ import ShiftsPage from "./app/admin/shifts/page";
 import UserSchedules from "./app/admin/user-schedules/page";
 import AttendancesPage from "./app/admin/attendances/page";
 import LeavePage from "./app/admin/leaves/page";
+import SawPage from "./app/admin/saw/page";
 
 import EmployeeLayout from "./app/employee/layout";
 import MyDashboard from "./app/employee/dashboard/page";
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
       {
         path: "leaves",
         element: <AdminRoute><LeavePage /></AdminRoute>,
+      },
+      {
+        path: "saw",
+        element: <AdminRoute><SawPage /></AdminRoute>,
       },
     ],
   },

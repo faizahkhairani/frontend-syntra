@@ -8,6 +8,7 @@ interface User {
   role: "admin" | "employee";
   department?: string;
   gender: "Male" | "Female";
+  isDemo: boolean
 }
 
 interface AuthStore {
@@ -17,8 +18,6 @@ interface AuthStore {
   logout: () => void;
   isAuthenticated: () => boolean;
 }
-
-// export const useAuthStore = create<AuthStore>()(
 //   persist(
 //     (set, get) => ({
 //       user: null,

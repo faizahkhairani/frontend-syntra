@@ -1,4 +1,4 @@
-import { Users, CheckCircle, Clock, CalendarClock, ArrowRight } from "lucide-react"
+import { Users, CheckCircle, Clock, CalendarClock } from "lucide-react"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import type { DashboardSummary } from "@/types"
@@ -49,7 +49,7 @@ const SummaryCard = ({ summary, isLoading }: SummaryCardsProps) => {
   if (isLoading) {
     return (
       <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {Array.from({ length: 6 }).map((_, i) => (
+        {Array.from({ length: 4 }).map((_, i) => (
           <Card key={i} className="shadow-none">
             <CardContent className="p-5 space-y-3">
               <Skeleton className="h-4 w-24" />
@@ -76,7 +76,6 @@ const SummaryCard = ({ summary, isLoading }: SummaryCardsProps) => {
           <CardContent className="mt-4">
             <div className="flex items-center justify-between">
               <p className="text-2xl font-medium">{card.value}</p>
-              <ArrowRight className="size-5" />
             </div>
           </CardContent>
         </Card>

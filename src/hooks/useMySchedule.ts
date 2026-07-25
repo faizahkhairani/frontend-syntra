@@ -21,7 +21,7 @@ interface Pagination {
 
 export const useMySchedule = () => {
     const [data, setData] = useState<ScheduleRecord[]>([])
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
     const [pagination, setPagination] = useState<Pagination>({
     total: 0, page: 1, limit: 5, totalPages: 0
   })

@@ -2,6 +2,7 @@ import SignInForm from "@/components/auth/sign-form"
 import { useAuthStore } from "@/store/authStore"
 import { Navigate } from "react-router-dom"
 import LoginHero from "@/assets/hero-cat.jpg"
+import DemoLoginButtons from "@/components/auth/button-demo"
 const LoginPage = () => {
 
   const token = useAuthStore((state) => state.token)
@@ -19,8 +20,9 @@ const LoginPage = () => {
     <div className="min-h-screen grid lg:grid-cols-2">
 
       {/* Kiri — Form */}
-      <div className="flex items-center justify-center p-8 bg-white">
+      <div className="flex flex-col items-center justify-center p-8 bg-white">
         <SignInForm />
+        <DemoLoginButtons />
       </div>
 
       <div className="hidden lg:block relative overflow-hidden">

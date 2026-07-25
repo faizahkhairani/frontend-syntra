@@ -31,19 +31,22 @@ const NavUser = () => {
         <SidebarMenuItem>
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                    <SidebarMenuButton size="lg" className="data-[state=open]:bg-sidebar-accent">
-                        <Avatar className="h-8 w-8 rounded-lg">
-                            <AvatarFallback className="rounded-lg bg-primary text-white text-xs">
-                            {initials}
-                            </AvatarFallback>
-                        </Avatar>
-                        <div className="flex flex-col text-left text-sm leading-tight">
-                            <span className="font-medium truncate">{user?.name}</span>
-                            <span className="text-xs text-muted-foreground truncate">
-                            {user?.email}
-                            </span>
-                        </div>
-                    </SidebarMenuButton>
+                    <SidebarMenuButton
+                    size="lg"
+                    className="data-[state=open]:bg-sidebar-accent flex items-center gap-2 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:w-full"
+                    >
+                  <Avatar className="h-8 w-8 rounded-lg group-data-[collapsible=icon]:mx-auto">
+                    <AvatarFallback className="rounded-lg bg-primary text-white text-xs">
+                      {initials}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="flex flex-col text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
+                    <span className="font-medium truncate">{user?.name}</span>
+                    <span className="text-xs text-muted-foreground truncate">
+                      {user?.email}
+                    </span>
+                  </div>
+                </SidebarMenuButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent side="top" align="start" className="w-56">
                     <DropdownMenuLabel>

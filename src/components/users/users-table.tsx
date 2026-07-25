@@ -31,6 +31,7 @@ import {
   FieldSet,
 } from "@/components/ui/field"
 import api from "@/lib/axios"
+import { useIsDemo } from "@/hooks/useDemo"
 
 
 // useUsers.ts fetch data → array users
@@ -71,6 +72,8 @@ const UsersTable = () => {
   // selectedUser nya null berarti false
   // selectedUser nya ada objek user berati true
   const isEditMode = !!selectedUser // convert ke boolean
+
+  const isDemo = useIsDemo()
 
   const {
     register,
@@ -227,7 +230,7 @@ const UsersTable = () => {
         </div>
         <Button size="sm" className="h-9 gap-1.5" onClick={handleAdd}>
           <Plus className="h-4 w-4" />
-          New Staff
+          Tambah Staff
         </Button>
       </div>
 
@@ -372,7 +375,7 @@ const UsersTable = () => {
                     </FieldSet>
                     <FieldSeparator/>
                     <Field className="flex justify-end gap-2" orientation="responsive">
-                        <Button type="submit" disabled={isSubmitting}>
+                        <Button type="submit" disabled={isSubmitting || isDemo}>
                             {isSubmitting ? (
                             <>
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />

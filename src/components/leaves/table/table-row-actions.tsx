@@ -13,6 +13,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Check, X } from "lucide-react";
+import { useIsDemo } from "@/hooks/useDemo";
 
 interface Props {
   row: Row<LeaveRequest>
@@ -34,6 +35,8 @@ const TableRowActions = ({row, onApprove, onReject}: Props) => {
         setRejectReason("");
     };
 
+    const isDemo = useIsDemo()
+
 
   return (
     <div>
@@ -43,6 +46,7 @@ const TableRowActions = ({row, onApprove, onReject}: Props) => {
             variant="outline"
             className="text-green-600 border-green-600 hover:bg-green-50"
             onClick={() => onApprove(request)} // ← row.original naik ke useLeaves
+            disabled={isDemo}
           >
           <Check className="w-4 h-4 mr-1" />
           Approve
@@ -86,7 +90,7 @@ const TableRowActions = ({row, onApprove, onReject}: Props) => {
               <Button
                 variant="destructive"
                 onClick={handleReject} // ← onReject dipanggil di sini
-                disabled={!rejectReason.trim()}
+                disabled={!rejectReason.trim() || isDemo}
               >
                 Tolak
               </Button>

@@ -6,6 +6,7 @@ import {
 import type { User } from "@/types"
 import type { Row } from "@tanstack/react-table"
 import { Button } from "@/components/ui/button"
+import { useIsDemo } from "@/hooks/useDemo"
 
 interface DataTableRowActionsProps {
     row: Row<User>
@@ -23,6 +24,8 @@ const DataTableRowActions = ({
   const user = row.original  // ← ambil data user dari row
   // user = { _id: "...", name: "Budi", email: "...", ... }
 
+  const isDemo = useIsDemo()
+
 
   return (
     <div>
@@ -33,13 +36,14 @@ const DataTableRowActions = ({
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-40">
-            <DropdownMenuItem onClick={() => onEdit(user)} className="cursor-pointer">
+            <DropdownMenuItem onClick={() => onEdit(user)} className="cursor-pointer" disabled={isDemo}>
               <Pencil className="mr-2 h-3.5 w-3.5" />
               Edit Staff
             </DropdownMenuItem>
             <DropdownMenuItem
             onClick={() => onResetPassword(user)}
             className="cursor-pointer"
+            disabled={isDemo}
             >
             <KeyRound className="mr-2 h-3.5 w-3.5" />
               Edit Password
@@ -48,6 +52,7 @@ const DataTableRowActions = ({
             <DropdownMenuItem
               onClick={() => onDelete(user)}
               className="cursor-pointer text-red-500 focus:text-red-500"
+              disabled={isDemo}
             >
               <Trash2 className="mr-2 h-3.5 w-3.5" />
               Hapus

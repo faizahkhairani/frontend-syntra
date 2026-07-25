@@ -6,6 +6,7 @@ import {
 import type { ShiftSchedule } from "@/types"
 import type { Row } from "@tanstack/react-table"
 import { Button } from "@/components/ui/button"
+import { useIsDemo } from "@/hooks/useDemo"
 
 interface DataTableRowActionsProps {
   row: Row<ShiftSchedule>
@@ -14,6 +15,7 @@ interface DataTableRowActionsProps {
 
 const DataTableRowActions = ({row, onDelete}: DataTableRowActionsProps) => {
   const schedule = row.original  // ← ambil data shift dari row
+  const isDemo = useIsDemo()
 
 
   return (
@@ -28,6 +30,7 @@ const DataTableRowActions = ({row, onDelete}: DataTableRowActionsProps) => {
             <DropdownMenuItem
               onClick={() => onDelete(schedule)}
               className="cursor-pointer text-red-500 focus:text-red-500"
+              disabled={isDemo}
             >
               <Trash2 className="mr-2 h-3.5 w-3.5" />
               Hapus

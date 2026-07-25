@@ -24,6 +24,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { toast } from "sonner"
+import { useIsDemo } from "@/hooks/useDemo"
 
 const formSchema = z.object({
   name:           z.string().min(1, "Nama shift wajib diisi"),
@@ -41,6 +42,7 @@ const ShiftsTable = () => {
     const [isFormOpen, setIsFormOpen] = useState(false)
     const [isDeleteOpen, setIsDeleteOpen] = useState(false)
     const [isDeleting, setIsDeleting] = useState(false)
+    const isDemo = useIsDemo()
 
     const isEditMode = !!selectedShift
 
@@ -134,7 +136,7 @@ const ShiftsTable = () => {
         </div>
         <Button size="sm" className="h-9 gap-1.5" onClick={handleAdd}>
           <Plus className="h-4 w-4" />
-          New Shift
+          Tambah Shift
         </Button>
       </div>
 
@@ -210,7 +212,9 @@ const ShiftsTable = () => {
                                             className="h-10"
                                             id="late_tolerance"
                                             placeholder="Masukkan Jam Akhir"
-                                            {...register("late_tolerance")}
+                                            {...register("late_tolerance", {
+                                                valueAsNumber: true,
+                                            })}
                                             />
                                             {errors.late_tolerance && (
                                             <p className="text-sm text-red-500">{errors.late_tolerance.message}</p>
@@ -220,7 +224,7 @@ const ShiftsTable = () => {
                                 </FieldSet>
                                 <FieldSeparator/>
                                 <Field className="flex justify-end gap-2" orientation="responsive">
-                                <Button type="submit" disabled={isSubmitting}>
+                                <Button type="submit" disabled={isSubmitting || isDemo}>
                                     {isSubmitting ? (
                                     <>
                                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />

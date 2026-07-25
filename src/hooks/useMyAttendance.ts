@@ -27,7 +27,7 @@ interface Pagination {
 
 export const useMyAttendance = () => {
     const [data, setData] = useState<AttendanceRecord[]>([])
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
     const [pagination, setPagination] = useState<Pagination>({
     total: 0, page: 1, limit: 10, totalPages: 0
   })

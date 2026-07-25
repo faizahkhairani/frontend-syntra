@@ -10,7 +10,8 @@ import {
   Users,
   CalendarSync,
   CalendarDays,
-  PawPrint
+  PawPrint,
+  Scale
 } from "lucide-react";
 import NavUser from "./nav-user";
 
@@ -49,6 +50,11 @@ const data = {
       icon: CalendarSync,
     },
     {
+      title: "Saw",
+      url: "/admin/saw",
+      icon: Scale,
+    },
+    {
       title: "Absensi",
       url: "/admin/attendances",
       icon: Megaphone,
@@ -57,11 +63,6 @@ const data = {
   
 };
 
-// const navEmployee = [
-//   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
-//   { title: "Attendance",url: "/attendance",icon: Megaphone },
-//   { title: "Leave",     url: "/leaves",    icon: CalendarSync },
-// ];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   // const {user} = useAuthStore()

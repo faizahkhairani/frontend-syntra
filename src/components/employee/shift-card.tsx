@@ -2,6 +2,7 @@ import { Card, CardContent } from "../ui/card"
 import { Clock, LogOut, Loader2, CheckCircle, LogIn, MapPin } from "lucide-react"
 import { Badge } from "../ui/badge"
 import { Button } from "../ui/button"
+import {isShiftStarted} from "@/lib/shiftTime"
 
 
 interface ShiftCardProps {
@@ -11,6 +12,7 @@ interface ShiftCardProps {
       name: string
       start_time: string
       end_time: string
+      overnight: boolean
     }
     date: string
     attendanceStatus: {
@@ -49,15 +51,22 @@ const statusConfig: Record<string, { label: string; className: string }> = {
 
 
 const ShiftCard = ({isLoading, onCheckIn, onCheckOut, shift}: ShiftCardProps) => {
+    const shiftStarted = isShiftStarted(shift.shiftId.start_time, shift.shiftId.overnight);
     const { attendanceStatus: att, shiftId } = shift
-    const status = att.status ? statusConfig[att.status] : null
+    
+    const status = !shiftStarted 
+    ? { label: "Nanti", className: "text-slate-500 border-slate-300 bg-slate-50" }
+    : att.status 
+    ? statusConfig[att.status] 
+    : null;
+    
   return (
-    <Card className="shadow-none">
-        <CardContent className="p-4 space-y-4">
+    <Card className="shadow-none rounded-2xl">
+        <CardContent className="px-4 space-y-2">
             <div className="flex items-center justify-between">
                 <div>
-                    <p className="font-semibold text-slate-800">{shiftId.name}</p>
-                    <div className="flex items-center gap-1 text-muted-foreground text-sm mt-0.5">
+                    <p className="text-sm text-slate-800">{shiftId.name}</p>
+                    <div className="flex items-center gap-1 text-muted-foreground text-xs mt-0.5">
                         <Clock className="h-3.5 w-3.5" />
                         <span>{shiftId.start_time} - {shiftId.end_time}</span>
                     </div>
@@ -88,8 +97,8 @@ const ShiftCard = ({isLoading, onCheckIn, onCheckOut, shift}: ShiftCardProps) =>
             <div className="flex flex-col sm:flex-row gap-2">
                 {/* tombol absen */}
                 <Button
-                    className="flex-1 h-10 gap-2"
-                    disabled={att.isCheckedIn || isLoading}
+                    className="h-10 gap-2 rounded-full"
+                    disabled={att.isCheckedIn || !shiftStarted || isLoading}
                     onClick={() => onCheckIn(shift._id)} // klik absen 
                 >
                     {isLoading && !att.isCheckedIn ? (
@@ -103,7 +112,7 @@ const ShiftCard = ({isLoading, onCheckIn, onCheckOut, shift}: ShiftCardProps) =>
                 </Button>
                 {/* tombol check out */}
                 <Button
-                    className="flex-1 h-10 gap-2"
+                    className="h-10 gap-2 rounded-full"
                     variant="outline"
                     disabled={!att.isCheckedIn || att.isCheckedOut || isLoading}
                     onClick={() => onCheckOut(shift._id)}
@@ -119,12 +128,12 @@ const ShiftCard = ({isLoading, onCheckIn, onCheckOut, shift}: ShiftCardProps) =>
                 </Button>
             </div>
             {/* Info lokasi */}
-            {!att.isCheckedIn && (
+            {/* {!att.isCheckedIn && (
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                 <MapPin className="h-3.5 w-3.5" />
                 <span>Pastikan GPS aktif dan berada di area petshop</span>
             </div>
-            )}
+            )} */}
 
         </CardContent>
     </Card>

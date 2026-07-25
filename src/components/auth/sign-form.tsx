@@ -2,14 +2,10 @@ import { Button } from "../ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Loader2, PawPrint } from "lucide-react"
-import { toast } from "sonner"
 import { z } from 'zod'
-import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import api from "@/lib/axios"
-import { useNavigate } from "react-router-dom"
-import { useAuthStore } from "@/store/authStore"
 import { useForm } from "react-hook-form"
+import { useLogin } from "@/hooks/useLogin"
 
 const SignInForm = () => {
 
@@ -20,9 +16,7 @@ const SignInForm = () => {
 
   type LoginForm = z.infer<typeof loginSchema>
 
-  const {setAuth} = useAuthStore()
-  const navigate = useNavigate()
-  const [isLoading, setIsLoading] = useState(false)
+  const { login, isLoading } = useLogin()
 
   const {
     register,
@@ -33,23 +27,7 @@ const SignInForm = () => {
   })
 
   const onSubmit = async (data: LoginForm) => {
-    try {
-      setIsLoading(true)
-      const res = await api.post("/auth/login", data)
-      const token = res.data.token        // ← langsung dari res.data
-      const user = res.data.data          // ← user ada di res.data.data
-      setAuth(user, token) // ambil informasi user login 
-      toast.success(`Selamat datang, ${user.name}!`)
-      if (user.role === "admin") {
-        navigate("/admin/dashboard")
-      } else {
-        navigate("/beranda")
-      }
-    } catch (err: any) {
-      toast.error(err.response?.data?.message || "Login gagal")
-    } finally {
-      setIsLoading(false)
-    }
+    await login(data.email, data.password)
   }
 
 

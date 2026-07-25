@@ -1,7 +1,7 @@
 import { useMyAttendance } from "@/hooks/useMyAttendance"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock } from "lucide-react"
+import { Calendar, Clock, Inbox } from "lucide-react"
 import MobilePagination from "@/components/employee/mobile-pagination"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
@@ -49,17 +49,6 @@ const MyAttendance = () => {
         {/* Tahun */}
         <div className="flex items-center justify-between mb-4">
             <h2 className="text-white text-lg font-semibold">Filter By</h2>
-            {/* <select
-            value={filterYear}
-            onChange={(e) => setFilterYear(e.target.value)}
-            className="bg-white/20 text-white text-sm px-3 py-1.5 rounded-lg border-none outline-none"
-            >
-            {[2024, 2025, 2026].map((y) => (
-                <option key={y} value={String(y)} className="text-black">
-                {y}
-                </option>
-            ))}
-            </select> */}
             <Select onValueChange={(value) => setFilterYear(value)} defaultValue={filterYear}>
             <SelectTrigger className="bg-white/20 text-white text-sm px-3 py-1.5 rounded-lg border-none outline-none">
                 <SelectValue placeholder="Filter Tahun" />
@@ -104,12 +93,12 @@ const MyAttendance = () => {
 
       <div className="space-y-3">
         {isLoading ? (
-            Array.from({ length: 5 }).map((_, i) => (
+            Array.from({ length: 3 }).map((_, i) => (
             <Skeleton key={i} className="h-24 w-full rounded-xl" />
           ))
         ) : data.length === 0 ? (
-            <div className="text-center py-12 text-muted-foreground text-sm">
-                Tidak ada data absensi bulan ini
+            <div className="flex flex-col items-center justify-center py-12 text-center">
+              <p className="text-black">Tidak ada data</p>
             </div>
         ) : (
             data.map((d) => {

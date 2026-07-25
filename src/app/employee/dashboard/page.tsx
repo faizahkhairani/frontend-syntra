@@ -1,4 +1,4 @@
-import { Clock, Inbox, MessageCircleWarning } from "lucide-react"
+import { Briefcase, Clock, Inbox, MessageCircleWarning } from "lucide-react"
 import { format } from "date-fns"
 import { id } from "date-fns/locale"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -72,28 +72,18 @@ const MyDashboard = () => {
         </div>
       </div>
       <div className="px-6 -mt-4">
-        <div className="bg-white rounded-2xl p-5 mb-4">
-          <div className="flex items-start gap-3">
-
-            <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center">
-              <MessageCircleWarning className="w-5 h-5 text-amber-600" />
+        <div className="bg-linear-to-r from-blue-50 to-purple-50 rounded-2xl p-5 border border-blue-100 mb-4">
+          <div className="flex items-start justify-between">
+            <div>
+              <h4 className="text-gray-900 font-semibold mb-1">
+                Pengingat
+              </h4>
+              <p className="text-gray-600 text-sm">
+                Jangan lupa absen hari ini
+              </p>
             </div>
-
-            <div className="flex-1">
-              <p className="text-black font-semibold mb-1">
-                Pastikan Lokasi Sesuai
-              </p>
-
-              <p className="text-xs text-black leading-relaxed">
-                Absensi dekat area petshop klinik!
-              </p>
-
-              <div className="mt-3 flex items-center gap-2">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                <span className="text-xs font-medium">
-                  Aktifkan GPS
-                </span>
-              </div>
+            <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center">
+              <Clock className="w-5 h-5 text-white" />
             </div>
           </div>
         </div>
@@ -115,7 +105,17 @@ const MyDashboard = () => {
             </p>
           </div>
         ) : (
-          <div className="space-y-2">
+          <div className="bg-primary rounded-2xl p-5 shadow-lg mb-6">
+            <div className="flex items-center gap-2 mb-4">
+              <Briefcase className="w-5 h-5 text-white" />
+              <h3 className="text-white font-semibold">
+                Shift Hari Ini
+              </h3>
+              <span className="ml-auto bg-white/20 backdrop-blur-sm px-2 py-1 rounded-lg text-xs text-white font-medium">
+                {shiftToday.length} Shift
+              </span>
+            </div>
+            <div className="space-y-3">
             {shiftToday.map((shift) => (
               <ShiftCard
                 key={shift._id}
@@ -126,6 +126,8 @@ const MyDashboard = () => {
                 onCheckOut={(id) => requestLocationAndAbsen(id, "checkout")}
               />
             ))}
+
+            </div>
           </div>
         )}
       </div>
