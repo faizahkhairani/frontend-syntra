@@ -77,7 +77,7 @@ export function DataTable<TData>({
           table.getRowModel().rows.map((row) => (
             <TableRow
               key={row.id}
-              className="transition-colors hover:bg-muted/40 [&:not(:last-child)]:border-b"
+              className="transition-colors hover:bg-muted/40 not-last:border-b"
             >
               {row.getVisibleCells().map((cell) => (
                 <TableCell key={cell.id} className="py-3">
