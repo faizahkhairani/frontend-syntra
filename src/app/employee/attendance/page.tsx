@@ -1,7 +1,7 @@
 import { useMyAttendance } from "@/hooks/useMyAttendance"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, Inbox } from "lucide-react"
+import { Calendar, Clock } from "lucide-react"
 import MobilePagination from "@/components/employee/mobile-pagination"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"

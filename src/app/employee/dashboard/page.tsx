@@ -1,4 +1,4 @@
-import { Briefcase, Clock, Inbox, MessageCircleWarning } from "lucide-react"
+import { Briefcase, Clock, Inbox } from "lucide-react"
 import { format } from "date-fns"
 import { id } from "date-fns/locale"
 import { Skeleton } from "@/components/ui/skeleton"

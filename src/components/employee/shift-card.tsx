@@ -1,5 +1,5 @@
 import { Card, CardContent } from "../ui/card"
-import { Clock, LogOut, Loader2, CheckCircle, LogIn, MapPin } from "lucide-react"
+import { Clock, LogOut, Loader2, CheckCircle, LogIn } from "lucide-react"
 import { Badge } from "../ui/badge"
 import { Button } from "../ui/button"
 import {isShiftStarted} from "@/lib/shiftTime"
@@ -127,13 +127,6 @@ const ShiftCard = ({isLoading, onCheckIn, onCheckOut, shift}: ShiftCardProps) =>
                     {att.isCheckedOut ? "Sudah Pulang" : "Absen Pulang"}
                 </Button>
             </div>
-            {/* Info lokasi */}
-            {/* {!att.isCheckedIn && (
-            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                <MapPin className="h-3.5 w-3.5" />
-                <span>Pastikan GPS aktif dan berada di area petshop</span>
-            </div>
-            )} */}
 
         </CardContent>
     </Card>
