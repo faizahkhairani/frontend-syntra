@@ -1,73 +1,97 @@
-# React + TypeScript + Vite
+# 🐾 Alit Vet — Attendance & Leave Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web application designed to simplify employee attendance and leave management for Alit Vet.
 
-Currently, two official plugins are available:
+Built with React, TypeScript, Node.js, Express.js, and MongoDB, the system provides GPS-based attendance, shift scheduling, leave management, role-based access control, and a Decision Support System (DSS) using the SAW method.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Demo
 
-## React Compiler
+[View Live Demo](https://frontend-syntra.vercel.app)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Screenshot PROJECT
+**Admin side**
+<img width="1600" height="1262" alt="thumnail-1" src="https://github.com/user-attachments/assets/e8d38586-0bb0-42d8-a1fe-b9915c678b30" />
+**Employee Side**
+<img width="1600" height="1200" alt="mockup user side" src="https://github.com/user-attachments/assets/8972e7a9-fbff-4d0e-950f-2a19b0940f22" />
 
-## Expanding the ESLint configuration
+## About The Project
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Alit Vet Attendance & Leave Management System is a web-based application designed to manage employee attendance, work schedules, and leave requests in one centralized platform.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The application supports two user roles:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Admin** — Manage employees, shifts, schedules, attendance, leave requests, and leave recommendations.
+- **Employee** — Check in and check out based on location, view attendance records, and submit leave requests.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## ✨ Features
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 🔐 Authentication & Authorization
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- JWT-based authentication
+- Role-based access control
+- Different permissions for Admin and Employee
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 📍 GPS-Based Attendance
+
+- Check-in and check-out using Browser Geolocation API
+- Location validation based on workplace area
+- Attendance records connected to employee schedules
+
+### 🕐 Shift Management
+
+- Create and manage shift templates
+- Assign shifts to employees
+- Support for overnight shifts
+- Maximum of two shifts per day validation
+
+### 📝 Leave Management
+
+- Submit leave requests
+- Manage leave requests
+- Leave quota management
+- Leave request status tracking
+
+### 📊 Decision Support System
+
+The system uses the **Simple Additive Weighting (SAW)** method to generate leave approval recommendations based on:
+
+- Remaining leave quota
+- Attendance rate
+- Lateness rate
+
+## 🛠️ Tech Stack
+
+**Frontend**
+- React.js
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Vite
+
+**Backend**
+- Node.js
+- Express.js
+- REST API
+- JWT
+
+**Database**
+- MongoDB
+
+**Tools**
+- Git
+- GitHub
+- Postman
+- VS Code
+- Vercel
+
+## 🏗️ Architecture
+
+```text
+React + TypeScript
+       │
+       │ REST API
+       ▼
+Node.js + Express.js
+       │
+       ▼
+    MongoDB
