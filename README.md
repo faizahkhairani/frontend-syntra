@@ -51,14 +51,6 @@ The application supports two user roles:
 - Leave quota management
 - Leave request status tracking
 
-### 📊 Decision Support System
-
-The system uses the **Simple Additive Weighting (SAW)** method to generate leave approval recommendations based on:
-
-- Remaining leave quota
-- Attendance rate
-- Lateness rate
-
 ## 🛠️ Tech Stack
 
 **Frontend**
