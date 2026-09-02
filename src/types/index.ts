@@ -6,6 +6,7 @@ export interface User {
   department?: string;
   phone?: string;
   gender: "Male" | "Female";
+  isDemo: boolean;
   createdAt: string;
 }
 

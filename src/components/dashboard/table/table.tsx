@@ -38,13 +38,13 @@ export function DataTable<TData>({
     <div className="space-y-4 w-full">
       <div className="rounded-lg border overflow-hidden">
         <Table>
-      <TableHeader>
+      <TableHeader className="uppercase text-[12px] text-muted-foreground bg-accent">
         {table.getHeaderGroups().map((headerGroup) => (
-          <TableRow key={headerGroup.id} className="bg-muted/40 hover:bg-muted/40">
+          <TableRow key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
               <TableHead
                 key={header.id}
-                className="h-11 text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+                className="h-14 text-[14px] text-black"
               >
                 {flexRender(header.column.columnDef.header, header.getContext())}
               </TableHead>

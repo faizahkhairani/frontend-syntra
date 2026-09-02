@@ -1,5 +1,5 @@
 import { Users, CheckCircle, Clock, CalendarClock } from "lucide-react"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import type { DashboardSummary } from "@/types"
 interface SummaryCardsProps {
@@ -48,7 +48,7 @@ const cards = (summary: DashboardSummary) => [
 const SummaryCard = ({ summary, isLoading }: SummaryCardsProps) => {
   if (isLoading) {
     return (
-      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {Array.from({ length: 4 }).map((_, i) => (
           <Card key={i} className="shadow-none">
             <CardContent className="p-5 space-y-3">
@@ -64,18 +64,16 @@ const SummaryCard = ({ summary, isLoading }: SummaryCardsProps) => {
   if (!summary) return null
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {cards(summary).map((card) => (
-        <Card key={card.title} className="text-foreground-accent shadow-none">
-          <CardHeader>
-            <div className="flex items-center gap-4">
-              <card.icon className={`size-5 ${card.color}`} />
-              {card.title}
-            </div>
-          </CardHeader>
-          <CardContent className="mt-4">
-            <div className="flex items-center justify-between">
+        <Card key={card.title} className="text-foreground-accent shadow-none pl-3 pr-3">
+          <CardContent className="flex justify-between items-center gap-4">
+            <div className="flex flex-col justify-between gap-6">
               <p className="text-2xl font-medium">{card.value}</p>
+              <p className="text-sm text-muted-foreground font-medium">{card.title}</p>
+            </div>
+            <div className={`flex items-center justify-center p-3 rounded-full ${card.color}`}>
+              <card.icon className="size-7" />
             </div>
           </CardContent>
         </Card>

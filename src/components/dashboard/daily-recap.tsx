@@ -42,9 +42,7 @@ const DailyRecapTable = () => {
     <Card className="shadow-none">
       <CardHeader className="flex flex-row items-center justify-between">
           <div className="space-y-1">
-            <CardTitle className="text-base font-semibold">
-            Absensi Hari ini
-            </CardTitle>
+            <p className="text-lg font-semibold">Absensi Hari ini</p>
             <p className="text-sm text-muted-foreground">
               {format(new Date(), "EEEE, d MMMM yyyy", { locale: id })}
             </p>

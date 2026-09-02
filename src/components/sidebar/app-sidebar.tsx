@@ -1,7 +1,6 @@
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
 } from "@/components/ui/sidebar"
 import {
@@ -13,9 +12,9 @@ import {
   PawPrint,
   Scale
 } from "lucide-react";
-import NavUser from "./nav-user";
 
 import NavMain from "./nav-main";
+import NavSecondary from "./nav-secondary";
 
 const data = {
   user: {
@@ -44,6 +43,8 @@ const data = {
       url: "/admin/schedules",
       icon: CalendarDays,
     },
+  ],
+  navSecondary: [
     {
       title: "Cuti",
       url: "/admin/leaves",
@@ -59,14 +60,12 @@ const data = {
       url: "/admin/attendances",
       icon: Megaphone,
     },
-  ],
+  ]
   
 };
 
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  // const {user} = useAuthStore()
-  // const navItems = user?.role === "admin" ? navAdmin : navEmployee;
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -74,16 +73,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <div className="bg-primary text-sidebar-primary-foreground flex aspect-square size-9 items-center justify-center rounded-lg">
             <PawPrint className="h-6 w-6 text-white" />
           </div>
-          <span className="truncate text-2xl font-medium">SyncTra</span>
+          <span className="truncate text-2xl font-bold">SyncTra</span>
         </div>
       </SidebarHeader>
       <hr className="border-background" />
       <SidebarContent>
         <NavMain items={data.navMain} />
+        <NavSecondary items={data.navSecondary}/>
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser/>
-      </SidebarFooter>
     </Sidebar>
   )
 }

@@ -3,6 +3,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import type { User } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import DataTableRowActions from "./table-row-actions";
+import { Button } from "@/components/ui/button";
+import { ArrowUpDown } from "lucide-react";
 
 interface ColumnAction {
     onEdit: (user: User) => void
@@ -18,13 +20,27 @@ export const getColumn = ({onEdit, onDelete, onResetPassword}: ColumnAction): Co
             cell: ({ row, table }) => {
                 const pageIndex = table.getState().pagination.pageIndex
                 const pageSize = table.getState().pagination.pageSize
+                const visibleRows = table.getRowModel().rows
+                const visibleRowIndex = visibleRows.findIndex((visibleRow) => visibleRow.id === row.id)
+                const visibleRowNumber = pageIndex * pageSize + visibleRowIndex + 1
 
-                return row.index + 1 + pageIndex * pageSize
+                return visibleRowNumber
             },
         },
         {
             accessorKey: "name",
-            header: "Nama Lengkap",
+            header: ({column}) => {
+            return(
+                <Button
+                    variant="ghost"
+                    type="button"
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                >
+                Nama Lengkap
+                <ArrowUpDown className="w-5 h-5"/>
+                </Button>
+            )
+            },
             cell: ({ row }) => {
                 const user = row.original
                 const initials = user.name
@@ -80,7 +96,7 @@ export const getColumn = ({onEdit, onDelete, onResetPassword}: ColumnAction): Co
             accessorKey: "role",
             header: "Role",
             cell: ({ row }) => (
-            <Badge variant="outline" className="text-xs capitalize">
+            <Badge variant="green" className="text-xs capitalize">
                 {row.original.role}
             </Badge>
             ),

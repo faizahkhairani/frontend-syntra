@@ -15,9 +15,9 @@ interface LeaveRequestChartProps {
 }
 
 const COLORS = {
-  pending: "#f59e0b",
-  approved: "#10b981",
-  rejected: "#ef4444",
+  pending: "#6675D6",
+  approved: "#3F53C3",
+  rejected: "#A3ACE8",
 };
 
 const LABELS: Record<string, string> = {
@@ -37,10 +37,8 @@ export function LeaveRequestChart({ data, isLoading }: LeaveRequestChartProps) {
 
   return (
     <Card className="shadow-none border-border/60">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-base font-semibold">
+      <CardHeader className="pb-2 font-semibold text-lg">
           Pengajuan Cuti
-        </CardTitle>
       </CardHeader>
       <CardContent>
         {isLoading ? (

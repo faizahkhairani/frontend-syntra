@@ -11,21 +11,21 @@ import { useAuthStore } from "@/store/authStore"
 import { useNavigate } from "react-router-dom"
 
 const NavUser = () => {
-    const {logout, user} = useAuthStore()
-    const navigate = useNavigate()
+  const {logout, user} = useAuthStore()
+  const navigate = useNavigate()
 
-    const handleLogout = () => {
-        logout()
-        navigate("/login")
-    }
+  const handleLogout = () => {
+    logout()
+    navigate("/login")
+  }
 
-    // ambil inisial nama untuk avatar
-    const initials = user?.name
-    ?.split(" ")
-    .map((n) => n[0])
-    .join("")
-    .toUpperCase()
-    .slice(0, 2)
+  // ambil inisial nama untuk avatar
+  const initials = user?.name
+  ?.split(" ")
+  .map((n) => n[0])
+  .join("")
+  .toUpperCase()
+  .slice(0, 2)
   return (
     <SidebarMenu>
         <SidebarMenuItem>

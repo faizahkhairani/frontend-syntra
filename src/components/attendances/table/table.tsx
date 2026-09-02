@@ -41,7 +41,7 @@ export function DataTable<TData>({
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id} className="text-[14px] font-medium text-muted-foreground">
+                  <TableHead key={header.id} className="text-[14px] h-14 text-black">
                     {flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 ))}

@@ -15,7 +15,7 @@ const Dashboard = () => {
 
       {/* Heading */}
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Selamat Datang, Admin!</h1>
         <p className="text-muted-foreground">Selamat datang kembali! Berikut ringkasan aktivitas hari ini.</p>
       </div>
 
@@ -26,7 +26,10 @@ const Dashboard = () => {
         <AttendanceChart data={attendanceData} isLoading={isLoading} />
         <LeaveRequestChart data={leaveStatusData} isLoading={isLoading} />
       </div>
-      <DailyRecapTable />
+        <DailyRecapTable />
+      {/* <div className="grid gap-4 lg:grid-cols-2 flex-1">
+        <PendingLeaveTable />
+      </div> */}
 
     </main>
   )

@@ -19,15 +19,15 @@ type NavItem = {
     icon?: LucideIcon
 }
 
-interface NavMainProps {
+interface NavSecondaryProps {
     items: NavItem[]
 }
 
-const NavMain = ({items}: NavMainProps  ) => {
+const NavSecondary = ({items}: NavSecondaryProps  ) => {
     const location = useLocation()
   return (
     <SidebarGroup>
-        <SidebarGroupLabel className="uppercase text-sm">Management</SidebarGroupLabel>
+        <SidebarGroupLabel className="uppercase text-sm">other menu</SidebarGroupLabel>
         <SidebarGroupContent>
             <SidebarMenu className="flex flex-col gap-2 text-gray-700 text-xl">
                 {items.map((item) => {
@@ -51,4 +51,4 @@ const NavMain = ({items}: NavMainProps  ) => {
   )
 }
 
-export default NavMain
+export default NavSecondary

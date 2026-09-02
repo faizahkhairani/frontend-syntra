@@ -1,6 +1,6 @@
 
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Bar,
@@ -47,10 +47,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 export function AttendanceChart({ data, isLoading }: AttendanceChartProps) {
   return (
     <Card className="shadow-none border-border/60">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-base font-semibold">
-          Tren Kehadiran Minggu Ini
-        </CardTitle>
+      <CardHeader className="pb-2 text-lg font-semibold">
+        Kehadiran Minggu Ini
       </CardHeader>
       <CardContent>
         {isLoading ? (
@@ -77,9 +75,9 @@ export function AttendanceChart({ data, isLoading }: AttendanceChartProps) {
                 iconSize={8}
                 wrapperStyle={{ fontSize: 12, paddingTop: 8 }}
               />
-              <Bar dataKey="hadir" stackId="a" fill="#10b981" radius={[0, 0, 0, 0]} name="Hadir" />
-              <Bar dataKey="terlambat" stackId="a" fill="#f59e0b" name="Terlambat" />
-              <Bar dataKey="absen" stackId="a" fill="#ef4444" radius={[4, 4, 0, 0]} name="Absen" />
+              <Bar dataKey="hadir" stackId="a" fill="#3F53C3" radius={[0, 0, 0, 0]} name="Hadir" />
+              <Bar dataKey="terlambat" stackId="a" fill="#6675D6" name="Terlambat" />
+              <Bar dataKey="absen" stackId="a" fill="#A3ACE8" radius={[4, 4, 0, 0]} name="Absen" />
             </BarChart>
           </ResponsiveContainer>
         )}

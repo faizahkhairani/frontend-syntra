@@ -1,7 +1,7 @@
 import {
   useReactTable, getCoreRowModel,
   getFilteredRowModel, getPaginationRowModel,
-  flexRender, type ColumnDef,
+  flexRender, type ColumnDef, getSortedRowModel, type SortingState
 } from "@tanstack/react-table"
 import { useState } from "react"
 import {
@@ -21,15 +21,22 @@ export function DataTable<TData>({
   columns, data, isLoading,
 }: DataTableProps<TData>) {
   const [globalFilter, setGlobalFilter] = useState("")
+  const [sorting, setSorting] = useState<SortingState>([])
 
   const table = useReactTable({
     data,
     columns,
-    state: { globalFilter },
+    state: {
+      globalFilter,
+      sorting,
+      pagination: { pageIndex: 0, pageSize: 10 },
+    },
     onGlobalFilterChange: setGlobalFilter,
+    onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
     initialState: { pagination: { pageSize: 10 } },
   })
 
@@ -41,7 +48,7 @@ export function DataTable<TData>({
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id} className="text-[14px] font-medium text-muted-foreground">
+                  <TableHead key={header.id} className="h-14 text-black">
                     {flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 ))}

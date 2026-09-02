@@ -1,15 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import type { User } from "@/types";
  // Auth store itu tempat nyimpen state user yang sedang login
-interface User {
-  _id: string;
-  name: string;
-  email: string;
-  role: "admin" | "employee";
-  department?: string;
-  gender: "Male" | "Female";
-  isDemo: boolean
-}
+
 
 interface AuthStore {
   user: User | null;
