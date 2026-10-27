@@ -8,11 +8,6 @@ Built with React, TypeScript, Node.js, Express.js, and MongoDB, the system provi
 
 [View Live Demo](https://frontend-syntra.vercel.app)
 
-## Screenshot PROJECT
-**Admin side**
-<img width="1600" height="1262" alt="thumnail-1" src="https://github.com/user-attachments/assets/e8d38586-0bb0-42d8-a1fe-b9915c678b30" />
-**Employee Side**
-<img width="1600" height="1200" alt="mockup user side" src="https://github.com/user-attachments/assets/8972e7a9-fbff-4d0e-950f-2a19b0940f22" />
 
 ## About The Project
 
