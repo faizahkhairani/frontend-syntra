@@ -1,4 +1,4 @@
-import UsersTable from "@/components/users/users-table"
+import UsersTable from "@/components/users/components/users-table"
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Mars, Venus } from "lucide-react";
 import { useUsers } from "@/hooks/useUsers";

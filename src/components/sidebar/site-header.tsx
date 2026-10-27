@@ -63,7 +63,7 @@ export function SiteHeader({user, onLogout}: SiteHeaderProps) {
         <SidebarTrigger className="-ml-1" />
         <Separator
           orientation="vertical"
-          className="mx-2 data-[orientation=vertical]:h-4"
+          className="mx-2 data-[orientation=vertical]:h-7"
         />
         <h1 className="text-base font-medium">{pageTitle}</h1>
         <div className="ml-auto flex items-center gap-2">
@@ -91,7 +91,7 @@ export function SiteHeader({user, onLogout}: SiteHeaderProps) {
                       {initials}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="flex flex-col text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
+                  <div className="flex flex-col text-left text-sm leading-tight group-data-[collapsible=icon]:hidden select-none">
                     <span className="font-medium truncate">{user?.name}</span>
                     <span className="text-xs text-muted-foreground truncate">
                       {user?.email}
@@ -105,23 +105,18 @@ export function SiteHeader({user, onLogout}: SiteHeaderProps) {
                     <DropdownMenuLabel>
                     <div className="flex flex-col gap-0.5">
                         <span className="font-medium">{user?.name}</span>
-                        <span className="text-xs text-muted-foreground capitalize truncate">
+                        <span className="text-xs text-muted-foreground truncate">
                         {user?.email}
                         </span>
                     </div>
                     </DropdownMenuLabel>
                      <DropdownMenuSeparator />
-                    <DropdownMenuItem className="cursor-pointer">
-                        <User2 className="mr-2 h-4 w-4" />
-                            Profile
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
                     <DropdownMenuItem
-                        onClick={onLogout}
-                        className="cursor-pointer text-red-500 focus:text-red-500"
+                      onClick={onLogout}
+                      className="cursor-pointer text-red-500 focus:text-red-500"
                     >
                     <LogOut className="mr-2 h-4 w-4" />
-                        Logout
+                      Logout
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>

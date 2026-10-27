@@ -133,6 +133,80 @@
     --sidebar-ring: oklch(0.556 0 0);
 }
 
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.25) transparent;
+}
+
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+*::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+
+*::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted-foreground) / 0.25);
+  border-radius: 9999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--muted-foreground) / 0.45);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.leave-table-scroll,
+.leave-table-scroll * {
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E1 #F1F5F9;
+}
+
+.leave-table-scroll::-webkit-scrollbar,
+.leave-table-scroll *::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.leave-table-scroll::-webkit-scrollbar-button,
+.leave-table-scroll *::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.leave-table-scroll::-webkit-scrollbar-track,
+.leave-table-scroll *::-webkit-scrollbar-track {
+  background: #F1F5F9;
+  border-radius: 8px;
+}
+
+.leave-table-scroll::-webkit-scrollbar-thumb,
+.leave-table-scroll *::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 8px;
+}
+
+.leave-table-scroll::-webkit-scrollbar-thumb:hover,
+.leave-table-scroll *::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

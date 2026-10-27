@@ -16,7 +16,7 @@ export const useLogin = () => {
       const token = res.data.token
       const user = res.data.data
       setAuth(user, token)
-      toast.success(`Selamat datang, ${user.name}!`)
+      toast.success(`Selamat datang kembali, ${user.name}!`)
       if (user.role === "admin") {
         navigate("/admin/dashboard")
       } else {

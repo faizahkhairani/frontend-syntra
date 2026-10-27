@@ -32,6 +32,7 @@ import {
 } from "@/components/ui/field"
 import api from "@/lib/axios"
 import { useIsDemo } from "@/hooks/useDemo"
+import PasswordInput from "../password-input"
 
 
 // useUsers.ts fetch data → array users
@@ -170,39 +171,37 @@ const UsersTable = () => {
     }
   }
 
-  // const handleResetPassword = async () => {
-  //   alert("Klik reset password!")
-  // }
-
-  // const onSubmit = async (data: FormValues) => {
-  //   console.log(data)
-  //   try {
-  //     await api.post("/users", data)
-  //     toast.success("Staff berhasil ditambahkan")
-  //     setIsFormOpen(false)
-  //     fetchUsers() // refresh tabel
-  //   } catch (err: any) {
-  //       toast.error(err.response?.data?.message || "Gagal menambahkan staff")
-  //   }
-  // }
-
   const onSubmit = async (data: FormValues) => {
-    console.log(data)
-    try {
-      if (isEditMode) {
-        const {password, ...rest} = data
-        await api.put(`/users/${selectedUser._id}`, rest)
-        toast.success("Data staff berhasil diupdate")
-      } else {
-        await api.post("/users", data)
-        toast.success("Staff berhasil ditambahkan")
-      }
-      setIsFormOpen(false)
-      fetchUsers()
-    } catch (err: any) {
-       toast.error(err.response?.data?.message || "Terjadi kesalahan")
+  console.log("Form data:", data);
+
+  try {
+    if (isEditMode) {
+      const { password, ...rest } = data;
+
+      console.log("Payload update:", rest);
+
+      const response = await api.put(
+        `/users/${selectedUser._id}`,
+        rest
+      );
+
+      console.log("Response update:", response.data);
+
+      toast.success("Data staff berhasil diupdate");
+    } else {
+      await api.post("/users", data);
+      toast.success("Staff berhasil ditambahkan");
     }
+
+    setIsFormOpen(false);
+    await fetchUsers();
+  } catch (err: any) {
+    console.error("Update error:", err.response?.data || err);
+    toast.error(
+      err.response?.data?.message || "Terjadi kesalahan"
+    );
   }
+};
 
   // filter search di frontend
   const filtered = users.filter((u) =>
@@ -379,7 +378,7 @@ const UsersTable = () => {
                             {isSubmitting ? (
                             <>
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Menambahkan...
+                          Creating...
                             </>
                             ) : (
                             isEditMode ? "Update User" : "Create User"
@@ -419,7 +418,12 @@ const UsersTable = () => {
       </Dialog>
 
       {/* Dialog Reset Password */}
-      <Dialog open={isResetOpen} onOpenChange={setIsResetOpen}>
+      <Dialog open={isResetOpen}
+      onOpenChange={(open) => {
+        setIsResetOpen(open)
+        if(!open) resetForm.reset()
+      }} 
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Reset Password</DialogTitle>
@@ -431,34 +435,37 @@ const UsersTable = () => {
             <div className="space-y-4 py-2">
               <Field>
                 <FieldLabel htmlFor="newPassword">New Password</FieldLabel>
-                <Input
+                <PasswordInput
                   id="newPassword"
-                  type="password"
                   placeholder="Enter new password"
                   {...resetForm.register("newPassword")}
-                />             
+                />
+                {resetForm.formState.errors.newPassword && (
+                  <p className="text-sm text-red-500">{resetForm.formState.errors.newPassword.message}</p>
+                )}
               </Field>
+
               <Field>
                 <FieldLabel htmlFor="confirmPassword">Confirm Password</FieldLabel>
-                <Input
+                <PasswordInput
                   id="confirmPassword"
-                  type="password"
                   placeholder="Confirm new password"
                   {...resetForm.register("confirmPassword")}
                 />
+                {resetForm.formState.errors.confirmPassword && (
+                  <p className="text-sm text-red-500">{resetForm.formState.errors.confirmPassword.message}</p>
+                )}
               </Field>
             </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setIsResetOpen(false)}>Batal</Button>
-            <Button type="submit" disabled={resetForm.formState.isSubmitting}>
-              {resetForm.formState.isSubmitting ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Resetting...
-                </>
-              ) : "Reset Password"}
-            </Button>
-          </DialogFooter>
+
+            <DialogFooter>
+              <Button type="button" variant="outline" onClick={() => setIsResetOpen(false)}>
+                Batal
+              </Button>
+              <Button type="submit" disabled={resetForm.formState.isSubmitting}>
+                Reset
+              </Button>
+            </DialogFooter>
           </form>
         </DialogContent>
       </Dialog>

@@ -27,7 +27,7 @@ const NavMain = ({items}: NavMainProps  ) => {
     const location = useLocation()
   return (
     <SidebarGroup>
-        <SidebarGroupLabel className="uppercase text-sm">Management</SidebarGroupLabel>
+        <SidebarGroupLabel className="text-sm">General</SidebarGroupLabel>
         <SidebarGroupContent>
             <SidebarMenu className="flex flex-col gap-2 text-gray-700 text-xl">
                 {items.map((item) => {

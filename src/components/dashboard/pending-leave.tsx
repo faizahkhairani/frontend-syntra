@@ -45,12 +45,12 @@ const PendingLeaveTable = () => {
 
   return (
     <Card className="border shadow-none">
-      <CardHeader className="pb-3 flex flex-row items-center justify-between">
+      <CardHeader className=" flex flex-row items-center justify-between">
         <CardTitle className="text-base font-semibold">
           Pengajuan Cuti Pending
         </CardTitle>
         <Button variant="ghost" size="sm" asChild>
-          <Link to="/leaves" className="text-xs text-muted-foreground">
+          <Link to="/admin/leaves" className="text-xs text-muted-foreground">
             Lihat semua →
           </Link>
         </Button>

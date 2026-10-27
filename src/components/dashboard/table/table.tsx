@@ -38,7 +38,7 @@ export function DataTable<TData>({
     <div className="space-y-4 w-full">
       <div className="rounded-lg border overflow-hidden">
         <Table>
-      <TableHeader className="uppercase text-[12px] text-muted-foreground bg-accent">
+      <TableHeader className="  text-[12px] text-muted-foreground bg-accent">
         {table.getHeaderGroups().map((headerGroup) => (
           <TableRow key={headerGroup.id}>
             {headerGroup.headers.map((header) => (

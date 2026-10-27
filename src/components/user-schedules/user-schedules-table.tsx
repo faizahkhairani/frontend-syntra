@@ -342,7 +342,7 @@ const SchedulesTable = () => {
               <Field className="flex justify-end gap-2" orientation="responsive">
                 <Button type="submit" disabled={isSubmitting || isDemo}>
                   {isSubmitting ? (
-                    <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Menyimpan...</>
+                    <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Assigning...</>
                   ) : "Assign Shift"}
                 </Button>
               </Field>

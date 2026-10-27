@@ -27,7 +27,7 @@ const NavSecondary = ({items}: NavSecondaryProps  ) => {
     const location = useLocation()
   return (
     <SidebarGroup>
-        <SidebarGroupLabel className="uppercase text-sm">other menu</SidebarGroupLabel>
+        <SidebarGroupLabel className="text-sm">Other menu</SidebarGroupLabel>
         <SidebarGroupContent>
             <SidebarMenu className="flex flex-col gap-2 text-gray-700 text-xl">
                 {items.map((item) => {
