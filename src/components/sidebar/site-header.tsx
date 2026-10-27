@@ -4,7 +4,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar"
 import {
   Search,
   Bell,
-  LogOut, User2, ChevronsUpDown
+  LogOut, ChevronsUpDown
 } from "lucide-react"
 import { useLocation } from "react-router-dom"
 
