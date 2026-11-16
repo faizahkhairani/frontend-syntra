@@ -58,7 +58,7 @@ export function SiteHeader({user, onLogout}: SiteHeaderProps) {
     .toUpperCase()
     .slice(0, 2)
   return (
-    <header className="flex h-16 bg-white items-center justify-between gap-2">
+    <header className="sticky top-0 z-10 flex h-16 bg-white items-center justify-between gap-2">
       <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
         <SidebarTrigger className="-ml-1" />
         <Separator

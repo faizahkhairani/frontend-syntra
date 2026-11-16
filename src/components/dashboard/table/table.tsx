@@ -38,13 +38,13 @@ export function DataTable<TData>({
     <div className="space-y-4 w-full">
       <div className="rounded-lg border overflow-hidden">
         <Table>
-      <TableHeader className="  text-[12px] text-muted-foreground bg-accent">
+      <TableHeader>
         {table.getHeaderGroups().map((headerGroup) => (
           <TableRow key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
               <TableHead
                 key={header.id}
-                className="h-14 text-[14px] text-black"
+                className="h-10 text-[14px]"
               >
                 {flexRender(header.column.columnDef.header, header.getContext())}
               </TableHead>
@@ -67,7 +67,7 @@ export function DataTable<TData>({
           <TableRow className="hover:bg-transparent">
             <TableCell colSpan={columns.length} className="h-40 text-center">
               <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground">
-                <Inbox className="h-8 w-8 opacity-40" />
+                <img src="/no-data-found.png" alt="No Data" className="object-contain h-25 w-25" />
                 <p className="text-sm font-medium">Belum ada data absensi</p>
                 <p className="text-xs">Data akan muncul setelah karyawan check in</p>
               </div>

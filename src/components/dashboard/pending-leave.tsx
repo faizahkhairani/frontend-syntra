@@ -44,7 +44,7 @@ const PendingLeaveTable = () => {
   }, [])
 
   return (
-    <Card className="border shadow-none">
+    <Card>
       <CardHeader className=" flex flex-row items-center justify-between">
         <CardTitle className="text-base font-semibold">
           Pengajuan Cuti Pending
@@ -56,9 +56,9 @@ const PendingLeaveTable = () => {
         </Button>
       </CardHeader>
       <CardContent className="p-0">
-        <Table>
+        <Table className="border-t">
           <TableHeader>
-            <TableRow className="bg-muted/50">
+            <TableRow>
               <TableHead className="pl-6">Karyawan</TableHead>
               <TableHead>Tipe</TableHead>
               <TableHead>Tanggal</TableHead>

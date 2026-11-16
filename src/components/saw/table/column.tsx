@@ -19,7 +19,7 @@ export const getColumn = () => {
     const columns: ColumnDef<LeaveRecommendation>[] = [
         {
             id: "rank",
-            header: "rank",
+            header: "Rank",
             cell: ({row}) => {
                 return row.original.saw.rank
             }
