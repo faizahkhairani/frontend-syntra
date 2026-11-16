@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/table"
 import { Skeleton } from "@/components/ui/skeleton"
 import { DataTablePagination } from "@/components/data-table-pagination"
-import { Inbox } from "lucide-react"
 
 interface DataTableProps<TData> {
   columns: ColumnDef<TData>[]
